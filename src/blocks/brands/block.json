@@ -1,0 +1,64 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/brands",
+	"version": "0.1.0",
+	"title": "Brands",
+	"category": "widgets",
+	"icon": "admin-generic",
+	"description": "Brands block.",
+	"example": {},
+	"supports": {
+		"html": false,
+		"customClassName": true,
+		"spacing": {
+			"padding": [
+				"top",
+				"bottom"
+			]
+		}
+	},
+	"textdomain": "brands",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"render": "file:./render.php",
+	"viewScript": "file:./view.js",
+	"attributes": {
+		"style": {
+			"type": "object",
+			"default": {
+				"spacing": {
+					"padding": {
+						"top": "96px",
+						"bottom": "96px"
+					}
+				}
+			}
+		},
+        "title": {
+            "type": "string",
+            "default": ""
+        },
+        "titleLevel": {
+            "type": "string",
+            "default": "h2"
+        },
+        "text": {
+            "type": "string",
+            "default": ""
+        },
+        "textLevel": {
+            "type": "string",
+            "default": "p"
+        },
+        "logos": {
+			"type": "array",
+			"default": ""
+		},
+        "blockID": {
+            "type": "string",
+            "default": ""
+        }
+    }
+}

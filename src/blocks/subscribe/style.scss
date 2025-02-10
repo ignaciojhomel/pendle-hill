@@ -1,0 +1,57 @@
+@import '../../scss/variables';
+@import '../../scss/mixins'; 
+
+.subscribe {
+	background-image: var(--background-image);
+	background-size: cover;
+	background-position: center;
+	color: $white;
+	padding: 9.6rem 0;
+	position: relative;
+
+	&__overlay {
+		background: linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%) ;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+
+	.container {
+		display: flex;
+		@include sm {
+			flex-direction: column;
+			gap: 4.8rem;
+		}
+	}
+
+	&__text-wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding-right: 12rem;
+		width: 50%;
+		@include sm {
+			padding-right: 0;
+			text-align: center;
+			width: 100%;
+		}
+
+		.icons-wrapper {
+			display: flex;
+			gap: 2.4rem;
+			text-align: center;
+			@include sm {
+				justify-content: center;
+				margin-top: 4rem;
+			}
+		}
+	}
+
+	&__form-wrapper {
+		width: 50%;
+		@include sm {
+			width: 100%;
+		}
+	}
+}

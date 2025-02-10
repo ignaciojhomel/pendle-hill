@@ -1,0 +1,58 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.promotion {
+	background-image: url("../../images/wall-bg.jpeg");
+	position: relative;
+
+	&__overlay {
+		background: linear-gradient(0deg, rgba(236, 230, 228, 0.95) 0%, rgba(236, 230, 228, 0.95) 100%);
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+	&__wrapper {
+		background-image: var(--background-image);
+		background-position: center;
+		background-size: cover;
+		padding: 19.5rem 0;
+		position: relative;
+		z-index: 1;
+		&-overlay {
+			background: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%);
+			height: 100%;
+			left: 0;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+	}
+	&__text-wrapper {
+		position: relative;
+		text-align: center;
+		z-index: 1;
+
+		&--subtitle {
+			background-color: $red;
+			color: $white;
+			font-family: "Montserrat-Bold", sans-serif;
+			font-size: 1.6rem;
+			letter-spacing: 0.1rem;
+			margin: 0 auto;
+			padding: 1rem;
+			text-transform: uppercase;
+			width: fit-content;
+		}
+		&--title {
+			color: $white;
+			font-size: clamp(3.6rem, 3.1775rem + 1.8028vw, 4.8rem);
+			margin-top: 1.3rem;
+		}
+		&--text {
+			color: $white;
+			margin: 0;
+		}
+	}
+}

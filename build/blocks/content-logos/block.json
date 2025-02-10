@@ -1,0 +1,126 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/content-logos",
+  "version": "0.1.0",
+  "title": "Content Logos",
+  "category": "widgets",
+  "icon": "admin-generic",
+  "description": "Content Logos block.",
+  "example": {},
+  "supports": {
+    "html": false,
+    "customClassName": true,
+    "spacing": {
+      "padding": [
+        "top",
+        "bottom"
+      ]
+    }
+  },
+  "textdomain": "content-logos",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScript": "file:./view.js",
+  "attributes": {
+    "style": {
+      "type": "object",
+      "default": {
+        "spacing": {
+          "padding": {
+            "top": "96px",
+            "bottom": "96px"
+          }
+        }
+      }
+    },
+    "backgroundImage": {
+      "type": "object",
+      "default": "",
+      "attributes": {
+        "url": {
+          "type": "string",
+          "default": ""
+        },
+        "id": {
+          "type": "number",
+          "default": 0
+        },
+        "alt": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "titleLevel": {
+      "type": "string",
+      "default": "h2"
+    },
+    "text": {
+      "type": "string",
+      "default": ""
+    },
+    "textLevel": {
+      "type": "string",
+      "default": "p"
+    },
+    "logos": {
+      "type": "array",
+      "default": ""
+    },
+    "primaryButton": {
+      "type": "object",
+      "default": "",
+      "attributes": {
+        "text": {
+          "type": "string",
+          "default": ""
+        },
+        "url": {
+          "type": "string",
+          "default": ""
+        },
+        "icon": {
+          "type": "string",
+          "default": ""
+        },
+        "target": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "secondaryButton": {
+      "type": "object",
+      "default": "",
+      "attributes": {
+        "text": {
+          "type": "string",
+          "default": ""
+        },
+        "url": {
+          "type": "string",
+          "default": ""
+        },
+        "icon": {
+          "type": "string",
+          "default": ""
+        },
+        "target": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "blockID": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}

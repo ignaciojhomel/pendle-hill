@@ -1,0 +1,10 @@
+@import './fonts';
+@import './variables';
+@import './mixins';
+@import './functions';
+@import './global';
+
+html :where(.wp-block) {
+  margin: 0;
+  max-width: unset;
+}

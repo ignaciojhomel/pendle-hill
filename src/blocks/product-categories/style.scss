@@ -1,0 +1,91 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.product-categories {
+	&__text-wrapper {
+		line-height: 150%;
+		margin: 0 auto;
+		max-width: 64.6rem;
+		text-align: center;
+
+		&--title {
+			font-size: clamp(3.6rem, 3.1775rem + 1.8028vw, 4.8rem);
+		}
+		&--text {
+			margin: 0.8rem 0 0;
+		}
+	}
+
+	&__wrapper {
+		margin-top: 5rem;
+		
+		
+		.woocommerce {
+			ul.products {
+				display: grid;
+ 		   		grid-template-columns: repeat(4, 1fr);
+    			grid-gap: 2rem;
+				@include md {
+					grid-template-columns: repeat(3, 1fr);
+				}
+				@include sm {
+					grid-template-columns: repeat(2, 1fr);
+				}
+				@include xs {
+					grid-template-columns: repeat(1, 1fr);
+				}
+
+				li.product {
+					margin: 0 !important;
+					overflow: hidden;
+					position: relative;
+					width: 100% !important;
+
+					h2.woocommerce-loop-category__title {
+						color: $white;
+						font-family: "Montserrat-Bold", sans-serif;
+						font-size: 2rem;
+						left: 50%;
+						position: absolute;
+						text-align: center;
+						text-shadow: 0px 2px 5px $black;
+						text-transform: uppercase;
+						top: 50%;
+						transform: translate(-50%, -50%);
+						z-index: 1;
+					}
+					a {
+						img {
+							margin: 0;
+							transition: 0.7s;
+						}
+						
+						&::after {
+							background: linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%);
+							content: "";
+							height: 100%;
+							position: absolute;
+							top: 0;
+							width: 100%;
+						}
+
+						&:hover {
+							img {
+								transform: scale(1.1);
+							}
+							&::after {
+								background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+							}
+						}
+					}
+				}
+
+				&::before {
+					display: none;
+				}
+			}
+		}
+	}
+	
+	
+}

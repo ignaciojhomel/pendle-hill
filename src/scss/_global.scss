@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+}
+html {
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    font-size: 1.6rem;
+    line-height: 150%;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 134.2rem;
+    padding: 0 1.5rem;
+    position: relative;
+    width: 100%;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "ProtestStrike", sans-serif;
+    font-weight: 700;
+    line-height: 125%;
+    margin: 0;
+}
+h1 {
+    font-size: clamp(5rem, 4.2254rem + 2.0657vw, 7.2rem);
+    letter-spacing: -0.144rem;
+}
+
+h2 {
+    font-size: clamp(3rem, 2.7887rem + 0.9014vw, 3.6rem);
+    letter-spacing: -0.096rem;
+}
+
+h3 {
+    font-size: clamp(2.4rem, 2.1887rem + 0.9014vw, 3rem);
+}
+
+/* Lenis */
+html.lenis, html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: clip;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
+
+
+/* Buttons */
+.btn {
+    align-items: center;
+    border: 0;
+    display: flex;
+    font-family: "Montserrat-Medium", sans-serif;
+    font-size: 1.6rem;
+    justify-content: center;
+    height: 4.8rem;
+    min-width: 15rem;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.btn-primary {
+    background-color: $green;
+    color: $white;
+}
+
+.btn-white {
+    background-color: $white;
+    color: $black;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid $lightgray;
+    color: $black;
+}
+
+/* Gravity Forms */
+.gform_wrapper.gravity-theme {
+    .gform_description {
+        display: none;
+    }
+    .gform_footer {
+        margin-top: 3.2rem !important;
+        padding-bottom: 0 !important;
+    }
+    .gform_button {
+        align-items: center;
+        background-color: $green;
+        border: 0;
+        color: $white;
+        display: flex;
+        font-family: "Montserrat-Medium", sans-serif;
+        font-size: 1.6rem;
+        justify-content: center;
+        height: 4.8rem;
+        min-width: 15rem;
+        text-decoration: none;
+        width: fit-content;
+        @include sm {
+            width: 100%;
+        }
+    }
+    input[type=text], 
+    input[type=email] {
+        background-color: transparent;
+        border: 0;
+        border-bottom: 1px solid #A1A6AF;
+        color: $white;
+        font-family: "Montserrat", sans-serif;
+        height: 5.6rem;
+        padding: 0 !important;
+        &::placeholder {
+            color: $white;
+        }
+    }
+}

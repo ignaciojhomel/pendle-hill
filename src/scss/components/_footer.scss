@@ -1,0 +1,78 @@
+.footer {
+    background-color: $black;
+    color: $white;
+    padding: 8rem 0;
+
+    &__logo {
+        img {
+            width: 23rem;
+        }
+    }
+
+    &__copyright {
+        border-top: 1px solid $white;
+        padding-top: 3.2rem;
+        p {
+            font-size: 1.4rem;
+            margin: 0;
+        }
+    }
+    &__main {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 7rem;
+    }
+
+    &__menu {
+        font-size: 1.4rem;
+        width: 20rem;
+        a {
+            color: $white;
+            text-decoration: none;
+            transition: 0.3s;
+            &:hover {
+                color: $green;
+            }
+        }
+        &-wrapper {
+            display: flex;
+            gap: 2.4rem;
+        }
+        &-title {
+            color: $green;
+            font-family: "Montserrat-Bold", sans-serif;
+        }
+        &-socials {
+            display: flex;
+            gap: 2.4rem;
+            margin-top: 2.4rem;
+        }
+        ul.menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            li.menu-item {
+                margin-bottom: 1.6rem;
+                a {
+                    color: $white;
+                    text-decoration: none;
+                    transition: 0.3s;
+                    font-size: 1.4rem;
+                    &:hover {
+                        color: $green;
+                    }
+                }
+            }
+        }
+        .trading {
+            &-day {
+                font-family: "Montserrat-Bold", sans-serif;
+                margin-bottom: 0;
+            }
+            &-hours {
+                margin-top: 0;
+            }
+        }
+        
+    }
+}

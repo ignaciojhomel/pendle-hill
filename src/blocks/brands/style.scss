@@ -1,0 +1,29 @@
+@import '../../scss/variables';
+@import '../../scss/mixins';
+
+.brands {
+	color: $black;
+	padding: 9.6rem 0;
+	position: relative;
+	text-align: center;
+
+	&__wrapper {
+		padding: 6rem 0;
+		@include sm {
+			padding-bottom: 0;
+		}
+	}
+	&__list {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 3.2rem;
+		justify-content: center;
+	}
+	&__item {
+		width: 10rem;
+		img {
+			width: 100%;
+		}
+	}
+}

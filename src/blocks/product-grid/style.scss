@@ -1,0 +1,250 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+ @import '../../scss/variables';
+ @import '../../scss/mixins';
+
+.wp-block-create-block-product-grid {
+	background: #ECE6E4;
+	padding: 64px 0;
+	.product-grid{
+		&__grid{
+			display: grid !important;
+			grid-template-columns: 15% auto;
+			gap: 50px;
+		}
+		&__product-count{
+			color: #111;
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 500;
+			line-height: var(--Line-height-text-sm, 20px); /* 142.857% */
+		}
+		&__header{
+			display: flex;
+			justify-content: space-between;
+		}
+		&__filter {
+			position: relative;
+			button{
+				display: flex;
+				width: 170px;
+				padding: 8px 16px;
+				justify-content: space-between;
+				align-items: center;
+				flex-shrink: 0;
+				// font
+				color: #111;
+				font-size: var(--Font-size-text-sm, 14px);
+				font-style: normal;
+				font-weight: 500;
+				line-height: var(--Line-height-text-sm, 20px);
+			}
+			ul{
+				padding-left: 0px;
+				display: none;
+				visibility: hidden;
+				opacity: 0;
+				position: absolute;
+				background: #FFF;
+				width: 100%;
+				padding: 5px 10px;
+					&.active{
+						display: block;
+						visibility: visible;
+						opacity: 1;
+					}
+				li{
+					border-bottom: 1px solid #89C758;
+					list-style: none;
+					padding: 10px 0px;
+					color: var(--Color-Neutral-black, #000);
+					font-size: 14px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: 150%; /* 21px */
+					cursor: pointer;
+					&:hover{
+						color:#89C758;
+					}
+					
+				}
+			}
+			.sort-by{
+				button{
+					display: flex;
+					align-items: center;
+				}
+			}
+		}
+		&__sidebar{
+			.sidebar__heading{
+				color: #111;
+				font-size: var(--Font-size-text-sm, 14px);
+				font-style: normal;
+				font-weight: 700;
+				line-height: var(--Line-height-text-sm, 20px);
+				padding-bottom: 16px;
+				border-bottom: 1px solid #AAA;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				&.active{
+					svg{
+						transform: rotate(180deg);
+					}
+				}
+				svg{
+					height: 22px;
+					width: 22px;
+				}
+			}
+			ul.categories{
+				padding-left: 0px;
+				display: block;
+				visibility: hidden;
+				opacity: 0;
+				&.active{
+					display: block;
+					visibility: visible;
+					opacity: 1;
+				}
+				li{
+					list-style: none;
+					color: #111;
+					font-size: var(--Font-size-text-sm, 14px);
+					font-style: normal;
+					font-weight: 400;
+					line-height: var(--Line-height-text-sm, 20px);
+					padding-bottom: 15px;
+					display: flex;
+					align-items: center;
+					gap: 15px;
+					input{
+						width: 20px;
+						height: 20px;
+						border: 1px solid var(--Border-secondary, #AAA);
+					}
+				}
+			}
+			
+		}
+		&__items{
+			ul.product-lists{
+				padding-left: 0px;
+				display: grid;
+				grid-template-columns: repeat(3,1fr);
+				gap: 32px;
+				padding-top: 50px;
+				li{
+					list-style: none;
+					img{
+						min-height: 300px;
+						object-fit: cover;
+						width: 100%;
+					}
+					.product-details{
+						.product_name{
+							margin-top: 24px;
+							color: #111;
+							font-size: var(--Font-size-text-xl, 20px);
+							font-style: normal;
+							font-weight: 700;
+							line-height: var(--Line-height-text-xl, 30px); /* 150% */
+						}
+						.product_price{
+							color: #111;
+							font-size: var(--Font-size-text-lg, 18px);
+							font-style: normal;
+							font-weight: 500;
+							line-height: var(--Line-height-text-lg, 28px); /* 155.556% */
+						}
+						button{
+							margin-top: 25px;
+							border-radius: var(--radius-none, 0px);
+							border: 2px solid var(--Gradient-skeuemorphic-gradient-border, rgba(255, 255, 255, 0.12));
+							background: var(--colors-foreground-fg-brand-secondary-500, #89C758);
+							// box-shadow: 0px 0px 0px 1px var(--Colors-Effects-Shadows-shadow-skeumorphic-inner-border, rgba(16, 24, 40, 0.18)) inset, 0px -2px 0px 0px var(--Colors-Effects-Shadows-shadow-skeumorphic-inner, rgba(16, 24, 40, 0.05)) inset, 0px 1px 2px 0px var(--Colors-Effects-Shadows-shadow-xs, rgba(16, 24, 40, 0.05));
+							width: 100%;
+							display: flex;
+							padding: var(--spacing-lg, 12px) 18px;
+							justify-content: center;
+							align-items: center;
+							gap: var(--spacing-sm, 6px);
+							a{
+								text-decoration: none;
+								color: var(--Component-colors-Components-Buttons-Primary-button-primary-fg, #FFF);
+	
+								font-size: var(--Font-size-text-md, 16px);
+								font-style: normal;
+								font-weight: 600;
+								line-height: var(--Line-height-text-md, 24px); 
+								cursor: pointer;
+								transition: all 0.3s ease-in-out;
+							}
+							&:hover{
+								background-color: #5f8f39;
+							}
+						}
+					}
+				}
+			}
+			.pagination-container{
+				ul{
+				    display: flex;
+					justify-content: center;
+					align-items: center;
+					position: relative;
+					margin-top: 50px;
+					padding-top: 20px;
+					border-top: 1px solid var(--Color-Neutral-neutral, #666);
+
+					
+					li{
+						list-style: none;
+						list-style: none;
+						display: flex;
+						width: 40px;
+						height: 40px;
+						justify-content: center;
+						align-items: center;
+						border-radius: 8px;
+						&.left-arrow{
+							position: absolute;
+							left: 0;
+						}
+						&.right-arrow{
+							position: absolute;
+							right: 0;
+						}
+						&.active{
+							background: var(--colors-foreground-fg-brand-secondary-500, #89C758);
+							a{
+								color: var(--Colors-Text-text-white, #FFF);
+								text-align: center;
+								font-family: "Proxima Nova";
+								font-size: 14px;
+								font-style: normal;
+								font-weight: 500;
+								line-height: 20px;
+								text-decoration: none;
+							}
+						}
+						a{
+							color: #111;
+							text-align: center;
+							font-size: 14px;
+							font-style: normal;
+							font-weight: 500;
+							line-height: 20px; 
+							text-decoration: none;
+						}
+					}
+				}
+			}
+		}
+	}
+}

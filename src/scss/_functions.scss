@@ -1,0 +1,29 @@
+@use 'sass:math';
+
+$rem-base: 10px;
+
+@function rem-calc($pxValue, $base: $rem-base) {
+  @return math.div($pxValue, $base) * 1rem;
+}
+
+@function em-calc($pxValue, $base: $rem-base) {
+  @return math.div($pxValue, $base) * 1em;
+}
+
+@function px-to-ch($px, $font-size) {
+  $ch-per-px: 0.5;
+  $font-size-px: if(unitless($font-size), $font-size, $font-size / 1px);
+  $ch-width-px: $font-size-px * $ch-per-px;
+  $ch: $px / $ch-width-px;
+
+  @return #{$ch}ch;
+}
+
+@function fluid($min-size, $max-size, $min-breakpoint, $max-breakpoint, $unit: vw) {
+  $slope: math.div($max-size - $min-size, $max-breakpoint - $min-breakpoint);
+  $slope-to-unit: $slope * 100;
+  $intercept-rem: rem-calc($min-size - $slope * $min-breakpoint);
+  $min-size-rem: rem-calc($min-size);
+  $max-size-rem: rem-calc($max-size);
+  @return clamp(#{$min-size-rem}, #{$slope-to-unit}#{$unit} + #{$intercept-rem}, #{$max-size-rem});
+}
