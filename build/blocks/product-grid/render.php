@@ -8,6 +8,8 @@ global $post;
 $page = (isset($_GET['product-page'])) ? $_GET['product-page'] : null;
 $sortByValue = (isset($_GET['sortby'])) ? $_GET['sortby'] : null;
 $selectedCategories = isset($_GET['categories']) ? explode(',', $_GET['categories']) : [];
+$min_price = isset($_GET['min_price']) ? floatval($_GET['min_price']) : null;
+$max_price = isset($_GET['max_price']) ? floatval($_GET['max_price']) : null;
 
 $products = $attributes['productLists'];
 
@@ -16,7 +18,7 @@ $postPerpage = $attributes['postPerpage'];
 $filterLists = $attributes['filterLists'];
 if(!is_admin(  )){
 	require_once get_template_directory().'/woocommerce/wooapi.php';
-	$paginatedProducts = $wooapi->get_paginated_products($products,  $page, $postPerpage,$selectedCategories,$sortByValue) ;
+	$paginatedProducts = $wooapi->get_paginated_products($products, $page, $postPerpage, $selectedCategories, $sortByValue, $min_price, $max_price);
 }
 $query_params = $_GET;
 ?>
@@ -40,6 +42,13 @@ $query_params = $_GET;
 					</li>
 					<?php endforeach;?>
 				</ul>
+				<div class="sidebar__heading">Price Range</div>
+				<div class="price-range-filter">
+					<input type="number" id="min-price" placeholder="Min Price" value="<?= esc_attr($min_price ?? '') ?>">
+					<input type="number" id="max-price" placeholder="Max Price" value="<?= esc_attr($max_price ?? '') ?>">
+					<button id="apply-price-filter">Apply</button>
+				</div>
+
 		</div>
 		<div class='item'>
 			<div class="product-grid__header">

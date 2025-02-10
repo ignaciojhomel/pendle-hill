@@ -14,7 +14,8 @@ class Wooapi {
         
     }
 
-    public function get_paginated_products($products, $current_page = 1, $per_page = 10, $categories = [27], $sortBy = 'price-desc') {
+    public function get_paginated_products($products, $current_page = 1, $per_page = 10, $categories = [27], $sortBy = 'price-desc', $min_price = null, $max_price = null) {
+        // Filter by categories
         if (!empty($categories)) {
             $products = array_filter($products, function ($product) use ($categories) {
                 if (!isset($product['categories']) || !is_array($product['categories'])) {
@@ -29,6 +30,20 @@ class Wooapi {
             });
         }
     
+        // Filter by price range
+        if (!is_null($min_price) || !is_null($max_price)) {
+            $products = array_filter($products, function ($product) use ($min_price, $max_price) {
+                $price = floatval($product['price'] ?? 0);
+                if (!is_null($min_price) && $price < $min_price) {
+                    return false;
+                }
+                if (!is_null($max_price) && $price > $max_price) {
+                    return false;
+                }
+                return true;
+            });
+        }
+    
         // Sorting products
         usort($products, function ($a, $b) use ($sortBy) {
             switch ($sortBy) {
@@ -36,7 +51,7 @@ class Wooapi {
                     return ($a['price'] ?? 0) <=> ($b['price'] ?? 0);
                 case 'price-high-to-low': 
                     return ($b['price'] ?? 0) <=> ($a['price'] ?? 0);
-                case 'name-asc': // Alphabetical A-Z
+                case 'name-asc': 
                 case 'alphabetically': 
                     return strcmp(strtolower($a['name'] ?? ''), strtolower($b['name'] ?? ''));
                 case 'name-desc': 
@@ -48,7 +63,6 @@ class Wooapi {
         });
     
         // Pagination calculations
-        if(count($products) > 0 && !empty($products)):
         $total_items = count($products);
         $total_pages = ceil($total_items / $per_page);
         $current_page = max(1, min($current_page, $total_pages));
@@ -68,9 +82,8 @@ class Wooapi {
                 'has_next' => $current_page < $total_pages
             ]
         ];
-        endif;
-        return [];
     }
+    
     
     
     

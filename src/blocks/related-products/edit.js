@@ -72,6 +72,7 @@ export default function Edit({attributes ,setAttributes}) {
 				<div className="related-products-block__heading"><h1>{heading}</h1></div>
 				<InspectorControls >
 					<PanelBody title={__('Banner Settings', 'related-products')}>
+						{<img src={backgroundImage.url}/>}
 						<MediaUpload
 							onSelect={(media) => (
 								setAttributes({ backgroundImage: { url: media.url, id: media.id, alt: media.alt }})
@@ -106,11 +107,15 @@ export default function Edit({attributes ,setAttributes}) {
 				<div className="related-products-block__content">
 				{Array.isArray(productLists) ? productLists.slice(0, limit).map((product) => (
 					<div className="item">
-						<img src="http://pendle-hill.test/wp-content/uploads/2025/02/logo-1-1.jpg" alt="" />
+						<a href={product.permalink}>
+							{product.images.length > 0 && (
+								<img src={product.images[0].src} alt={product.name} />
+							)}
+						</a>
 						<div className="product-details">
-							<div className="product-name">Chicken Pack</div>
+							<div className="product-name">{product.name}</div>
 							<div className="product-price">
-								<p>$80</p>
+								<p>{product.price}</p>
 							</div>
 						</div>
 						<div className="action">

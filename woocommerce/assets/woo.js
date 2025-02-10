@@ -22,4 +22,15 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+    if(document.querySelector('.wp-block-woocommerce-cart')){
+        const cartBlockElement = document.querySelector('.wp-block-woocommerce-cart');
+        cartBlockElement.classList.add('container')
+    }
+    if(document.querySelector('.wc-block-checkout[data-block-name="woocommerce/checkout"]')){
+        const checkoutBlockElement = document.querySelector('.wc-block-checkout[data-block-name="woocommerce/checkout"]');
+        checkoutBlockElement.classList.add('container')
+        checkoutBlockElement.classList.add('pt-5')
+    }
+   
+
 });

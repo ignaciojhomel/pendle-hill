@@ -21,5 +21,32 @@
  */
  
 /* eslint-disable no-console */
-console.log("Hello World! (from create-block-product-grid block)");
 /* eslint-enable no-console */
+    const minPriceInput = document.getElementById("min-price");
+    const maxPriceInput = document.getElementById("max-price");
+    const priceFilterButton = document.getElementById("apply-price-filter");
+
+    if (priceFilterButton) {
+        priceFilterButton.addEventListener("click", function () {
+            let params = new URLSearchParams(window.location.search);
+
+            const minPrice = minPriceInput.value.trim();
+            const maxPrice = maxPriceInput.value.trim();
+
+            if (minPrice) {
+                params.set("min_price", minPrice);
+            } else {
+                params.delete("min_price");
+            }
+
+            if (maxPrice) {
+                params.set("max_price", maxPrice);
+            } else {
+                params.delete("max_price");
+            }
+
+            params.set("product-page", "1"); // Reset to page 1
+            window.location.search = params.toString();
+        });
+    }
+

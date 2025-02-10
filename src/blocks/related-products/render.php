@@ -2,35 +2,30 @@
 /**
  * @see https://github.com/WordPress/gutenberg/blob/trunk/docs/reference-guides/block-api/block-metadata.md#render
  */
-global $post;
-$heading = $attributes['heading'];
-$limit = $attributes['limit'];
-$backgroundImage = $attributes['backgroundImage'];
-$text = $attributes['text'];
 
-if (class_exists('WooCommerce') && $post && !is_admin()) {
-    $product = wc_get_product($post->ID);
-    
+
+$heading = $attributes['heading'] ?? '';
+$limit = $attributes['limit'] ?? 4; 
+$backgroundImage = $attributes['backgroundImage'] ?? '';
+$text = $attributes['text'] ?? '';
+
+$post_id = get_queried_object_id();
+
+if (class_exists('WooCommerce') && !is_admin()) {
+    $product = wc_get_product($post_id);
     if ($product) {
         $related_ids = wc_get_related_products($product->get_id(), $limit);
-        if (!empty($related_ids)) {
-            $args = [
-                'post_type'      => 'product',
-                'post__in'       => $related_ids,
-                'posts_per_page' => $limit,
-            ];
-        } else {
-            $args = [
-                'post_type'      => 'product',
-                'posts_per_page' => $limit,
-                // 'orderby'        => 'rand',
-            ];
-        }
+        $args = [
+            'post_type'      => 'product',
+            'posts_per_page' => $limit,
+            'post__in'       => $related_ids,
+            'orderby'        => 'post__in',
+        ];
+
         $query = new WP_Query($args);
+
     }
 }
-
-
 ?>
 
 <div <?php echo get_block_wrapper_attributes(); ?> style="background-image:url(<?=$backgroundImage['url'];?>)">
@@ -63,7 +58,7 @@ if (class_exists('WooCommerce') && $post && !is_admin()) {
                 <?php endwhile; ?>
                 <?php wp_reset_postdata(); ?>
             <?php else : ?>
-                <p>No related products found.</p>
+                <p style="text-align:center;">No related products found.</p>
             <?php endif; ?>
         </div>
     </div>

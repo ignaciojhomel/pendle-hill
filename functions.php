@@ -197,3 +197,4 @@ function customtheme_add_woocommerce_support() {
 add_action('after_setup_theme', 'customtheme_add_woocommerce_support');
 
 include get_stylesheet_directory(  ).'/woocommerce/template-settings/single-product-settings.php';
+include get_stylesheet_directory(  ).'/woocommerce/template-settings/cart-settings.php';
